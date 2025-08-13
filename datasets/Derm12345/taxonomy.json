@@ -1,0 +1,112 @@
+{
+    "melanocytic benign": {
+        "banal compound": {
+            "subclasses": [
+                {"name": "acral", "label": "acb"},
+                {"name": "congenital", "label": "ccb"},
+                {"name": "miescher", "label": "mcb"},
+                {"name": "compound nevus", "label": "cb"}
+            ]
+        },
+        "banal dermal": {
+            "subclasses": [
+                {"name": "blue", "label": "bdb"},
+                {"name": "dermal nevus", "label": "db"}
+            ]
+        },
+        "banal junctional": {
+            "subclasses": [
+                {"name": "acral", "label": "ajb"},
+                {"name": "congenital", "label": "cjb"},
+                {"name": "junctional nevus", "label": "jb"}
+            ]
+        },
+        "lentigo": {
+            "subclasses": [
+                {"name": "ink spot lentigo", "label": "isl"},
+                {"name": "lentigo simplex", "label": "ls"},
+                {"name": "solar lentigo", "label": "sl"}
+            ]
+        },
+        "dysplastic compound": {
+            "subclasses": [
+                {"name": "acral", "label": "acd"},
+                {"name": "congenital", "label": "ccd"},
+                {"name": "compound nevus", "label": "cd"}
+            ]
+        },
+        "dysplastic junctional": {
+            "subclasses": [
+                {"name": "acral", "label": "ajd"},
+                {"name": "spitz-reed", "label": "srjd"},
+                {"name": "junctional nevus", "label": "jd"}
+            ]
+        },
+        "dysplastic recurrent": {
+            "subclasses": [
+                {"name": "recurrent", "label": "rd"}
+            ]
+        }
+    },
+    "melanocytic malignant": {
+        "melanoma": {
+            "subclasses": [
+                {"name": "acral lentiginous", "label": "alm"},
+                {"name": "acral nodular", "label": "anm"},
+                {"name": "lentigo maligna", "label": "lm"},
+                {"name": "lentigo maligna melanoma", "label": "lmm"},
+                {"name": "melanoma", "label": "mel"}
+            ]
+        }
+    },
+    "nonmelanocytic benign": {
+        "keratinocytic": {
+            "subclasses": [
+                {"name": "seborrheic keratosis", "label": "sk"},
+                {"name": "lichenoid keratosis", "label": "lk"}
+            ]
+        },
+        "fibro-histiocytic": {
+            "subclasses": [
+                {"name": "dermatofibroma", "label": "df"}
+            ]
+        },
+        "vascular": {
+            "subclasses": [
+                {"name": "angiokeratoma", "label": "angk"},
+                {"name": "hemangioma", "label": "ha"},
+                {"name": "lymphangioma", "label": "la"},
+                {"name": "pyogenic granuloma", "label": "pg"},
+                {"name": "spider angioma", "label": "sa"}
+            ]
+        }
+    },
+    "nonmelanocytic indeterminate": {
+        "keratinocytic": {
+            "subclasses": [
+                {"name": "actinic keratosis", "label": "ak"}
+            ]
+        }
+    },
+    "nonmelanocytic malignant": {
+        "keratinocytic": {
+            "subclasses": [
+                {"name": "basal cell carcinoma", "label": "bcc"},
+                {"name": "bowen's disease", "label": "bd"},
+                {"name": "cutaneous horn", "label": "ch"},
+                {"name": "mammary paget disease", "label": "mpd"},
+                {"name": "squamous cell carcinoma", "label": "scc"}
+            ]
+        },
+        "fibro-histiocytic": {
+            "subclasses": [
+                {"name": "dermatofibrosarcoma protuberans", "label": "dfsp"}
+            ]
+        },
+        "vascular": {
+            "subclasses": [
+                {"name": "kaposi sarcoma", "label": "ks"}
+            ]
+        }
+    }
+  }

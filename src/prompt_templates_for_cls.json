@@ -1,0 +1,72 @@
+{
+    "Derm12345_single_step": [
+        "***** SYSTEM *****",
+        "You are a dermatologist examining a lesion image from the derm12345 dataset, organized as:",
+        "• 5 super-classes (broad diagnostic families)",
+        "• 15 main-classes (within each super-class)",
+        "• 40 subclasses (mutually-exclusive leaf labels)",
+        "• Each subclass has a unique `label` field\n",
+        "***** TASK *****",
+        "Indentify the image using the the hierarchical taxonomy below.\n",
+        "***** TAXONOMY *****",
+        "{taxonomy}\n",
+        "***** RULES *****",
+        "1. Output exactly one line in the format:",
+        "   <super-class> - <main-class> - <subclass> - <label>",
+        "2. All values must be lowercase and match the taxonomy exactly.",
+        "3. No quotes, punctuation, or reasoning.",
+        "4. If confidence < 90%, use \"unknown\" for any uncertain level:",
+        "   • All unknown: `unknown - unknown - unknown - unknown`",
+        "   • Unknown main: `<super-class> - unknown - unknown - unknown`",
+        "   • Unknown subclass: `<super-class> - <main-class> - unknown - unknown`"
+    ],
+
+    "Derm12345_multi_step_rules": [
+        "***** RULES *****",
+        "1. Output exactly one line:  {response_format}",
+        "2. Use lowercase and match the given **{granularity}** exactly.",
+        "3. No quotes, punctuation, or reasoning.",
+        "4. If confidence < 90%, output: `unknown`."
+    ],
+
+    "Derm12345_super_class": [
+        "***** TASK *****",
+        "Classify the image into a **super-class** provided below.\n",
+        "***** SUPER-CLASSES *****",
+        "{super_classes}\n"
+    ],
+
+    "Derm12345_main_class": [
+        "***** CONTEXT *****",
+        "The lesion belongs to the super-class: {super_class}",
+        "Use this information to narrow down the classification.\n",
+        "***** TASK *****",
+        "Classify the lesion into one of the **main-classes** under the given super-class.\n",
+        "***** MAIN-CLASSES *****",
+        "{main_classes}\n"
+    ],
+
+    "Derm12345_subclass": [
+        "***** CONTEXT *****",
+        "The lesion belongs to the super-class: {super_class} and main class: {main_class}",
+        "Use this information to narrow down the classification.\n",
+        "***** TASK *****",
+        "Classify the lesion into one of the **subclasses** under the given super-class and main-class.",
+        "Output both the subclass name and the corresponding label.\n",
+        "***** SUBCLASSES *****",
+        "{subclasses}\n"
+    ],
+
+    "Other": [
+        "***** INSTRUCTIONS *****",
+        "You are a dermatologist examining a lesion/skin disease image.",
+        "Provide your answer in the exact format specified below.",
+        "If confidence < 90%, output: `unknown`.\n",
+        "***** GOAL *****",
+        "Classify the lesion. Choose the most appropriate class from the taxonomy below.\n",
+        "***** TAXONOMY *****",
+        "{taxonomy}\n",
+        "***** RESPONSE FORMAT *****",
+        "(must exactly match the taxonomy, no quotes or extra punctuation)"
+    ]
+}
