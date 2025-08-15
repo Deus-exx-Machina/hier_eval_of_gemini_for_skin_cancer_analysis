@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import ast
+from typing import Union
 
 base_dir = os.path.dirname(__file__)
 
@@ -248,3 +249,59 @@ def filter_one_condition_scin_clinical(metadata:pd.DataFrame):
     metadata[label_col] = metadata[label_col].apply(lambda x: ast.literal_eval(x)[0])
 
     return metadata
+
+
+def validate_pred(dataset:str, pred:str, taxonomy:Union[dict, list], 
+                  super_class_pred:str=None, main_class_pred:str=None, subclass_key:str="name"):
+    if dataset == "derm12345":
+        if super_class_pred ==  None:
+            # Validate super class prediction
+            class_labels = taxonomy.keys() 
+        elif main_class_pred == None:
+            # Validate main class prediction
+            class_labels = taxonomy.get(super_class_pred).keys()
+        else:
+            # Validate subclass prediction
+            class_labels = [item[subclass_key] for item in 
+                            taxonomy.get(super_class_pred).get(main_class_pred)["subclasses"]]
+    elif dataset  in {"hiba", "scin_clinical"}:
+        class_labels = taxonomy
+    elif dataset in {"bcn20000", "pad-ufes-20"}:
+        class_labels = taxonomy.keys()
+
+    if pred not in class_labels:
+        pred = "malformed output" if pred != "unknown" else "unknown"
+    return pred, pred in class_labels
+
+
+def search_derm12345_by_label(taxonomy:dict, target_label:str):
+    if target_label == "unknown":
+        return "unknown", "unknown", "unknown"
+    for super_class, main_classes in taxonomy.items():
+        for main_class, data in main_classes.items():
+            for subclass in data["subclasses"]:
+                if subclass["label"] == target_label:
+                    return super_class, main_class, subclass["name"]
+    return "malformed output", "malformed output", "malformed output"
+
+
+def get_main_classes_str(taxonomy:dict, target_super_classes:list):
+    lines = []
+    for super_class in target_super_classes:
+        lines.append(f"{super_class}:")
+        for main_class in taxonomy[super_class].keys():
+            lines.append(f"  - {main_class}")
+    return "\n".join(lines)
+
+
+def get_subclasses_str(taxonomy:dict, target_main_classes:dict):
+    lines = []
+    for super_class, main_classes in target_main_classes.items():
+        lines.append(f"{super_class}:")
+        for main_class in main_classes.items():
+            lines.append(f"  - {main_class}")
+            for subclass in taxonomy[super_class][main_class]["subclasses"]:
+                lines.append(f"    • {subclass['name']} (label: {subclass['label']})")
+    return "\n".join(lines)
+
+
